@@ -1,0 +1,15 @@
+SQL> select pname,sum(item_sold) from product p left join sales s using (pid) group by pname;
+
+PNAME                SUM(ITEM_SOLD)
+-------------------- --------------
+LED TV                           20
+laptop
+mobile                           10
+
+SQL> select pname,nvl(sum(item_sold),0) from product p left join sales s using (pid) group by pname;
+
+PNAME                NVL(SUM(ITEM_SOLD),0)
+-------------------- ---------------------
+LED TV                                  20
+laptop                                   0
+mobile                                  10
